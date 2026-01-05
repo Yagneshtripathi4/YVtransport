@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Contact YV Transport for logistics and heavy material transportation quotes: pipelines, cement, steel and industrial cargo." />
+  <title>YV Transport | Contact</title>
+
+  <!-- ✅ Connect CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div class="container topbar-row">
+      <div class="topbar-left">
+        <span class="badge">Industrial Logistics</span>
+        <span class="topbar-text">Pipelines • Cement • Steel • Construction Materials</span>
+      </div>
+
+      <div class="topbar-right">
+        <a class="topbar-link" href="tel:+917977541406" aria-label="Call YV Transport">+91 7977541406</a>
+        <span class="dot" aria-hidden="true">•</span>
+        <a class="topbar-link" href="tel:+918169706533" aria-label="Call YV Transport">+91 8169706533</a>
+        <span class="dot" aria-hidden="true">•</span>
+        <a class="topbar-link" href="mailto:info@yvtransport.com">info@yvtransport.com</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="container header-row">
+      <a class="logo" href="index.html" aria-label="YV Transport Home">
+        <span class="logo-mark" aria-hidden="true"></span>
+        <span class="logo-text">YV Transport</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+      </button>
+
+      <nav id="siteNav" class="nav" aria-label="Primary navigation">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="services.html">Services</a>
+        <a class="nav-link active" href="contact.html">Contact</a>
+        <a class="nav-cta" href="contact.html">Request Quote</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" role="main">
+    <!-- Contact Intro -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h1>Contact</h1>
+          <p class="section-subtitle">
+            Get a quote for pipelines, cement, steel, and construction logistics. Share pickup, drop, and cargo details — we’ll respond quickly.
+          </p>
+        </div>
+
+        <!-- Two-column layout using existing card styles (no extra CSS required) -->
+        <div class="cards">
+          <!-- Contact Details -->
+          <section class="card" aria-label="Contact details">
+            <h2 style="font-size:1.05rem;">Company Details</h2>
+            <p class="muted" style="margin-top:8px;">Reach us directly for faster coordination.</p>
+
+            <div style="margin-top:14px; display:grid; gap:10px;">
+              <div>
+                <strong>Phone:</strong>
+                <div><a href="tel:+917977541406">+91 7977541406</a></div>
+                <div><a href="tel:+918169706533">+91 8169706533</a></div>
+              </div>
+
+              <div>
+                <strong>Email:</strong>
+                <div><a href="mailto:info@yvtransport.com">info@yvtransport.com</a></div>
+              </div>
+
+              <div>
+                <strong>WhatsApp:</strong>
+                <!-- Replace 91XXXXXXXXXX with your number (no + sign, no spaces) -->
+                <div>
+                  <a href="https://wa.me/917977541406" target="_blank" rel="noopener">Chat on WhatsApp</a>
+                </div>
+              </div>
+
+              <div>
+                <strong>Address:</strong>
+                <div class="muted">Your area, city, state</div>
+              </div>
+
+              <div>
+                <strong>Working Hours:</strong>
+                <div class="muted">Mon–Sun: 9:00 AM – 9:00 PM (edit as needed)</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Quote Form (front-end only) -->
+          <section class="card" aria-label="Quote request form">
+            <h2 style="font-size:1.05rem;">Request a Quote</h2>
+            <p class="muted" style="margin-top:8px;">
+              Fill in the details below. (This form is front-end only right now — later we can connect it to email/Google Forms.)
+            </p>
+
+            <form id="quoteForm" style="margin-top:14px; display:grid; gap:12px;">
+              <label style="display:grid; gap:6px; font-weight:650;">
+                Name
+                <input required type="text" name="name" placeholder="Your name" />
+              </label>
+
+              <label style="display:grid; gap:6px; font-weight:650;">
+                Phone
+                <input required type="tel" name="phone" placeholder="+91..." />
+              </label>
+
+              <label style="display:grid; gap:6px; font-weight:650;">
+                Material Type
+                <input required type="text" name="material" placeholder="Pipelines / Cement / Steel..." />
+              </label>
+
+              <label style="display:grid; gap:6px; font-weight:650;">
+                Pickup Location
+                <input required type="text" name="pickup" placeholder="Pickup area/city" />
+              </label>
+
+              <label style="display:grid; gap:6px; font-weight:650;">
+                Drop Location
+                <input required type="text" name="drop" placeholder="Drop area/city" />
+              </label>
+
+              <label style="display:grid; gap:6px; font-weight:650;">
+                Load Details
+                <input type="text" name="load" placeholder="Approx weight/length/tonnage (optional)" />
+              </label>
+
+              <label style="display:grid; gap:6px; font-weight:650;">
+                Message
+                <textarea required name="message" rows="4" placeholder="Preferred date/time, site instructions, etc."></textarea>
+              </label>
+
+              <button class="btn btn-primary" type="submit">Submit</button>
+              <p id="formStatus" class="muted" aria-live="polite"></p>
+            </form>
+          </section>
+
+          <!-- Extra info card (optional but useful) -->
+          <section class="card" aria-label="What to include">
+            <h2 style="font-size:1.05rem;">To get a fast quote</h2>
+            <p class="muted" style="margin-top:8px;">Include these details to avoid back-and-forth:</p>
+
+            <ul class="checklist" style="margin-top:12px;">
+              <li>Pickup + drop location (city/area)</li>
+              <li>Material type (pipeline/cement/steel)</li>
+              <li>Approx weight / length / quantity</li>
+              <li>Date & time preference</li>
+              <li>Any loading/unloading notes</li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta" aria-label="Call to action">
+      <div class="container cta-box">
+        <div class="cta-text">
+          <h2>Need urgent dispatch?</h2>
+          <p>Call us with your pickup/drop and material details.</p>
+        </div>
+
+        <div class="cta-actions">
+          <a class="btn btn-primary" href="tel:+917977541406">Call 7977541406</a>
+          <a class="btn btn-primary" href="tel:+918169706533">Call 8169706533</a>
+          <a class="btn btn-secondary" href="https://wa.me/917977541406" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <span class="logo-mark" aria-hidden="true"></span>
+          <strong>YV Transport</strong>
+        </div>
+        <p class="muted">Heavy material logistics for pipelines, cement, steel, and industrial cargo.</p>
+      </div>
+
+      <div class="footer-col">
+        <h3 class="footer-title">Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3 class="footer-title">Contact</h3>
+        <ul class="footer-links">
+          <li><a href="tel:+917977541406">+91 7977541406</a></li>
+          <li><a href="tel:+918169706533">+91 8169706533</a></li>
+          <li><a href="mailto:info@yvtransport.com">info@yvtransport.com</a></li>
+          <li><span class="muted">Navi Mumbai,Maharashtra</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p class="muted">© <span id="year"></span> YV Transport. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ✅ Connect JS -->
+  <script src="js/main.js"></script>
+
+  <!-- Small inline script for the quote form (front-end only) -->
+  <script>
+    const form = document.getElementById("quoteForm");
+    const statusEl = document.getElementById("formStatus");
+
+    if (form && statusEl) {
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        statusEl.textContent = "Thanks! We received your details. We'll contact you shortly (form backend not connected yet).";
+        form.reset();
+      });
+    }
+  </script>
+</body>
+</html>
