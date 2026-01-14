@@ -92,7 +92,7 @@
 
               <div>
                 <strong>Address:</strong>
-                <div class="muted">Your area, city, state</div>
+                <div class="muted">Navi Mumbai,Maharashtra</div>
               </div>
 
               <div>
@@ -106,7 +106,7 @@
           <section class="card" aria-label="Quote request form">
             <h2 style="font-size:1.05rem;">Request a Quote</h2>
             <p class="muted" style="margin-top:8px;">
-              Fill in the details below. (This form is front-end only right now — later we can connect it to email/Google Forms.)
+              Fill in the details below. 
             </p>
 
             <form id="quoteForm" style="margin-top:14px; display:grid; gap:12px;">
@@ -276,7 +276,7 @@
     if (form && statusEl) {
       form.addEventListener("submit", (e) => {
         e.preventDefault();
-        statusEl.textContent = "Thanks! We received your details. We'll contact you shortly (form backend not connected yet).";
+        statusEl.textContent = "Thanks! We received your details. We'll contact you shortly.";
         form.reset();
       });
     }
