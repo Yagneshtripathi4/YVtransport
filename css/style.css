@@ -551,20 +551,145 @@ h3{ font-size: 1.05rem; }
   .footer-grid{ grid-template-columns: 1fr; }
 }
 
+/* =========================
+   Mobile nav (premium animation)
+   Desktop unchanged
+   ========================= */
 @media (max-width: 720px){
   .nav-toggle{ display: inline-flex; }
+
+  /* Anchor dropdown under header, not at a hardcoded top */
+  .header-row{ position: relative; }
+
+  /* Animated dropdown:
+     - default: hidden but mounted (allows smooth animation)
+     - JS controls visibility by toggling aria-expanded on .nav-toggle
+  */
   .nav{
-    display: none; /* JS can toggle this later */
+    display: flex;                 /* keep mounted for animation */
+    flex-direction: column;
+    gap: 6px;
+
     position: absolute;
-    right: 4%;
-    top: 110px;
+    top: calc(100% + 10px);
+    right: 0;
+    width: min(340px, 92vw);
+
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 16px;
+    border-radius: 18px;
     box-shadow: var(--shadow);
-    padding: 10px;
-    flex-direction: column;
-    width: min(320px, 92vw);
+    padding: 12px;
+
+    /* animation states */
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
+    pointer-events: none;
+    visibility: hidden;
+
+    transform-origin: top right;
+    transition: opacity 180ms ease, transform 200ms ease, visibility 0s linear 200ms;
   }
+
+  /* When the button says expanded=true, show nav */
+  .nav-toggle[aria-expanded="true"] + .nav{
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+    visibility: visible;
+    transition: opacity 180ms ease, transform 200ms ease;
+  }
+
   .nav a{ width: 100%; }
+
+  /* Touch-friendly items */
+  .nav-link{
+    padding: 12px 12px;
+    border-radius: 14px;
+    font-size: 1rem;
+  }
+  .nav-cta{
+    width: 100%;
+    text-align: center;
+    padding: 12px 12px;
+    margin-left: 0;
+    border-radius: 14px;
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce){
+    .nav{ transition: none; transform: none; }
+    .nav-toggle[aria-expanded="true"] + .nav{ transition: none; }
+  }
+}
+
+/* =========================
+   Mobile polish overrides
+   (Desktop unchanged)
+   ========================= */
+@media (max-width: 720px){
+
+  /* Layout comfort + no horizontal scroll */
+  html, body { overflow-x: hidden; }
+  .container{
+    width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* Slightly tighter section spacing (cleaner on phones) */
+  .section{ padding: 42px 0; }
+  .hero{ padding: 40px 0 24px; }
+  .cta{ padding: 34px 0 44px; }
+
+  /* Typography tweaks for readability */
+  body{ font-size: 16px; }
+  .hero-subtitle{ font-size: 1rem; line-height: 1.6; }
+
+  /* Buttons: better tap targets + nicer stacking */
+  .btn{ min-height: 44px; }
+  .btn-row, .hero-actions, .cta-actions{
+    gap: 12px;
+  }
+  .hero-card-actions .btn,
+  .cta-actions .btn{
+    width: 100%;
+  }
+
+  /* Header + topbar spacing */
+  .topbar-row{ justify-content: center; }
+  .topbar-left, .topbar-right{ justify-content: center; }
+
+  /* Cards/grids: nicer breathing room */
+  .cards, .steps, .hero-card-list, .hero-card-actions{
+    gap: 12px;
+  }
+  .cards .card, .step, .hero-card{
+    padding: 16px;
+  }
+
+  /* Metrics: prevent cramped look */
+  .hero-metrics{ gap: 12px; }
+  .metric{ padding: 14px; }
+
+  /* CTA: stack cleanly */
+  .cta-box{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .cta-actions{ width: 100%; }
+
+  /* Forms (Contact page): mobile-friendly inputs (doesn't affect desktop) */
+  input, select, textarea{
+    width: 100%;
+    font-size: 16px; /* prevents iOS zoom */
+  }
+}
+
+@media (max-width: 420px){
+  /* Extra small phones: slightly tighter */
+  .section{ padding: 36px 0; }
+  .hero{ padding: 34px 0 20px; }
+  .logo-text{ font-size: 1rem; }
 }

@@ -2,41 +2,85 @@
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// Mobile nav toggle
+/* =========================
+   Mobile nav toggle (polished)
+   - No desktop changes
+   - Better mobile UX: outside tap, ESC close, scroll lock
+   ========================= */
 const navToggle = document.querySelector(".nav-toggle");
 const nav = document.getElementById("siteNav");
+const mobileMQ = window.matchMedia("(max-width: 720px)");
+
+function setMobileMenu(open) {
+  if (!navToggle || !nav) return;
+
+  // Only manage open/close behavior on mobile
+  if (!mobileMQ.matches) {
+    nav.style.display = ""; // let CSS handle desktop
+    navToggle.setAttribute("aria-expanded", "false");
+    navToggle.setAttribute("aria-label", "Open menu");
+    document.body.style.overflow = ""; // ensure unlocked
+    return;
+  }
+
+  navToggle.setAttribute("aria-expanded", String(open));
+  navToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  nav.style.display = open ? "flex" : "none";
+
+  // Premium feel: prevent background scroll when menu is open
+  document.body.style.overflow = open ? "hidden" : "";
+}
+
+function isMenuOpen() {
+  return navToggle?.getAttribute("aria-expanded") === "true";
+}
 
 if (navToggle && nav) {
-  navToggle.addEventListener("click", () => {
-    const isOpen = navToggle.getAttribute("aria-expanded") === "true";
-    navToggle.setAttribute("aria-expanded", String(!isOpen));
+  // Ensure correct initial state
+  setMobileMenu(false);
 
-    // Show/hide nav (CSS mobile uses display:none)
-    nav.style.display = isOpen ? "none" : "flex";
+  navToggle.addEventListener("click", () => {
+    const open = !isMenuOpen();
+    setMobileMenu(open);
   });
 
-  // Optional: close menu when clicking a link (mobile)
+  // Close menu when clicking a link (mobile)
   nav.addEventListener("click", (e) => {
     const link = e.target.closest("a");
     if (!link) return;
-
-    // If nav is currently open and screen is mobile-ish, close it
-    if (window.matchMedia("(max-width: 720px)").matches) {
-      navToggle.setAttribute("aria-expanded", "false");
-      nav.style.display = "none";
-    }
+    if (mobileMQ.matches) setMobileMenu(false);
   });
 
-  // Optional: reset nav display when resizing (prevents stuck menu)
+  // Close when tapping outside (mobile)
+  document.addEventListener("click", (e) => {
+    if (!mobileMQ.matches) return;
+    if (!isMenuOpen()) return;
+
+    const clickedInsideNav = nav.contains(e.target);
+    const clickedToggle = navToggle.contains(e.target);
+    if (!clickedInsideNav && !clickedToggle) setMobileMenu(false);
+  });
+
+  // Close on Escape key (mobile)
+  document.addEventListener("keydown", (e) => {
+    if (!mobileMQ.matches) return;
+    if (e.key === "Escape" && isMenuOpen()) setMobileMenu(false);
+  });
+
+  // Keep nav state correct on resize / orientation change
   window.addEventListener("resize", () => {
-    if (window.matchMedia("(min-width: 721px)").matches) {
-      nav.style.display = "flex";
-      navToggle.setAttribute("aria-expanded", "false");
-    } else {
-      nav.style.display = "none";
-      navToggle.setAttribute("aria-expanded", "false");
-    }
+    // If switching to desktop, release inline styles & scroll lock
+    if (!mobileMQ.matches) setMobileMenu(false);
+    else setMobileMenu(false); // keep closed on mobile resize too (prevents weird stuck states)
   });
+
+  // Also react immediately when media query changes
+  if (typeof mobileMQ.addEventListener === "function") {
+    mobileMQ.addEventListener("change", () => setMobileMenu(false));
+  } else if (typeof mobileMQ.addListener === "function") {
+    // older browsers fallback
+    mobileMQ.addListener(() => setMobileMenu(false));
+  }
 }
 
 /* =========================
